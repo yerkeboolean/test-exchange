@@ -4,6 +4,7 @@ import {
   getConversionRate,
   clearConversionResult,
 } from "../../redux/store/currency-actions";
+import { CurrencyListItem } from "../../redux/models";
 
 import "./style.css";
 // + create input with state that get currency and check if input is not correct
@@ -18,8 +19,9 @@ const HomeScreen = () => {
   const allcurrencies = useAppSelector(
     (state) => state.currency.all_currencies
   );
-
-  const allcurrenciesCode = allcurrencies.map((item: any) => item[0]);
+  const allcurrenciesCode = allcurrencies.map(
+    (item: CurrencyListItem) => item[0]
+  );
 
   const [inputState, setInputState] = useState<string[]>([]);
   const [errorList, setErrorList] = useState<string[]>([]);
@@ -30,7 +32,7 @@ const HomeScreen = () => {
     setErrorList([]);
   };
 
-  const handleExchangeClick = () => {
+  const handleConvertClick = () => {
     const errors: string[] = [];
     if (inputState.length !== 4 || inputState[2]?.toLowerCase() !== "to") {
       errors.push("Please use example '15 USD to EUR'");
@@ -60,6 +62,9 @@ const HomeScreen = () => {
 
   return (
     <div>
+      <p>
+        <mark>"15 USD to EUR"</mark> use this example to convert
+      </p>
       <div className="input-group mb-3">
         <input
           type="text"
@@ -68,14 +73,17 @@ const HomeScreen = () => {
           aria-label="Enter exchange condition"
           aria-describedby="button-addon2"
           onChange={handleInput}
+          onFocus={() => {
+            setErrorList([]);
+          }}
         />
         <button
           className="btn btn-outline-secondary"
           type="button"
           id="button-addon2"
-          onClick={handleExchangeClick}
+          onClick={handleConvertClick}
         >
-          Exchange
+          Convert
         </button>
       </div>
       <div>

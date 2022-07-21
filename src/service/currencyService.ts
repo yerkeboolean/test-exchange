@@ -1,6 +1,6 @@
 import { currencyapi } from "./api";
 
-const apiKey = "VJdq052s1qJXxUV9cVXDtnwWeiimXpDB";
+const apiKey: string = process.env.REACT_APP_API_KEY!;
 
 export default {
   async getAllCurrencies() {

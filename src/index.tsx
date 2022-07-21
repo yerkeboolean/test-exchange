@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomeScreen, CurrencyScreen } from "./screens";
 import { Layout } from "./components";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

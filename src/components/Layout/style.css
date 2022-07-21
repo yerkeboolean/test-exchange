@@ -13,6 +13,7 @@
   color: #ffffff;
 }
 
+
 .layout_header-left {
   display: flex;
   align-items: center;
@@ -33,4 +34,14 @@
   width: 85px;
   height: 40px;
   font-family: monospace;
+}
+
+
+@media screen and (max-width: 480px) {
+  .layout_header-logotype {
+    display: none;
+  }
+  .layout_header-left nav {
+    margin-left: 0px;
+  }
 }

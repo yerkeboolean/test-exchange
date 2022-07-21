@@ -1,7 +1,7 @@
 // + get list of currencies by default currency
 // + formula n = 1 / currencyRate;
 // + styling screen
-// - adding types
+// + adding types
 
 import { useEffect } from "react";
 import { fetchCurrenciesToBase } from "../../redux/store/currency-actions";
@@ -32,14 +32,16 @@ const CurrencyScreen = () => {
             </tr>
           </thead>
           <tbody>
-            {baseCurrencies.map((item: any, index: number) => (
-              <tr key={index}>
-                <th scope="row">1 {item[0]}</th>
-                <td>
-                  {(1 / item[1]).toFixed(5)} {baseCurrency}
-                </td>
-              </tr>
-            ))}
+            {baseCurrencies.map((item: [string, number], index: number) => {
+              return (
+                <tr key={index}>
+                  <th scope="row">1 {item[0]}</th>
+                  <td>
+                    {(1 / item[1]).toFixed(5)} {baseCurrency}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       )}
